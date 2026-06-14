@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Heap Sort Visualizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image:url(https://wallpaperaccess.com/full/2270782.png);
+      background-size: cover;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #inputSection {
+      margin-bottom: 20px;
+    }
+
+    #arrayInput {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #barContainer {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 400px;
+      margin-top: 30px;
+    }
+
+    .bar {
+      margin: 0 2px;
+      background-color: steelblue;
+      width: 30px;
+      text-align: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .bar.compare {
+      background-color: orange;
+    }
+
+    .bar.swap {
+      background-color: crimson;
+    }
+
+    .bar.sorted {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="color: aliceblue;">Heap Sort Visualizer</h1>
+  <div id="inputSection">
+    <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas" />
+    <button onclick="startSort()">Visualize Sort</button>
+  </div>
+  <div id="barContainer"></div>
+
+  <script>
+    function createBars(array) {
+      const container = document.getElementById('barContainer');
+      container.innerHTML = '';
+      array.forEach((value, index) => {
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        bar.style.height = `${value * 5}px`;
+        bar.textContent = value;
+        container.appendChild(bar);
+      });
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function heapify(array, n, i) {
+      const bars = document.getElementsByClassName('bar');
+      let largest = i;
+      let left = 2 * i + 1;
+      let right = 2 * i + 2;
+
+      if (left < n) bars[left].classList.add('compare');
+      if (right < n) bars[right].classList.add('compare');
+      bars[i].classList.add('compare');
+
+      await sleep(500);
+
+      if (left < n && array[left] > array[largest]) {
+        largest = left;
+      }
+
+      if (right < n && array[right] > array[largest]) {
+        largest = right;
+      }
+
+      if (left < n) bars[left].classList.remove('compare');
+      if (right < n) bars[right].classList.remove('compare');
+      bars[i].classList.remove('compare');
+
+      if (largest !== i) {
+        [array[i], array[largest]] = [array[largest], array[i]];
+
+        // Update visuals
+        bars[i].style.height = `${array[i] * 5}px`;
+        bars[i].textContent = array[i];
+        bars[largest].style.height = `${array[largest] * 5}px`;
+        bars[largest].textContent = array[largest];
+
+        bars[i].classList.add('swap');
+        bars[largest].classList.add('swap');
+
+        await sleep(500);
+
+        bars[i].classList.remove('swap');
+        bars[largest].classList.remove('swap');
+
+        await heapify(array, n, largest);
+      }
+    }
+
+    async function heapSort(array) {
+      const bars = document.getElementsByClassName('bar');
+      let n = array.length;
+
+      // Build heap (rearrange array)
+      for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+        await heapify(array, n, i);
+      }
+
+      // One by one extract elements from heap
+      for (let i = n - 1; i > 0; i--) {
+        // Swap current root with end
+        [array[0], array[i]] = [array[i], array[0]];
+
+        // Update visuals
+        bars[0].style.height = `${array[0] * 5}px`;
+        bars[0].textContent = array[0];
+        bars[i].style.height = `${array[i] * 5}px`;
+        bars[i].textContent = array[i];
+
+        bars[0].classList.add('swap');
+        bars[i].classList.add('swap');
+
+        await sleep(500);
+
+        bars[0].classList.remove('swap');
+        bars[i].classList.remove('swap');
+        bars[i].classList.add('sorted');
+
+        await heapify(array, i, 0);
+      }
+
+      bars[0].classList.add('sorted'); // Final element is now sorted
+    }
+
+    function startSort() {
+      const input = document.getElementById('arrayInput').value;
+      const array = input.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+
+      if (array.length === 0) {
+        alert('Please enter a valid list of numbers.');
+        return;
+      }
+
+      createBars(array);
+      heapSort(array);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f5f5f5;
+    background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'), linear-gradient(to bottom, #1e3c72, #2a5298);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgb(231, 213, 213);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.status {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #afd7fd;
+    border-left: 5px solid #2196F3;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+}
+
+.status::before {
+    content: "ℹ️";
+    font-size: 18px;
+}
+
+.status.error {
+    background-color: #fcb3bf;
+    border-left-color: #fc2515;
+}
+
+.status.error::before {
+    content: "⚠️";
+}
+
+.status.success {
+    background-color: #aeffb5;
+    border-left-color: #4CAF50;
+}
+
+.status.success::before {
+    content: "✅";
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #aca9a9;
+    border-radius: 4px;
+    margin-right: 5px;
+    width: 80px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #29752d;
+}
+
+#enqueueBtn {
+    background-color: #4CAF50;
+}
+
+#enqueueBtn:hover {
+    background-color: #1e6b20;
+}
+
+#dequeueBtn {
+    background-color: #f44336;
+}
+
+#dequeueBtn:hover {
+    background-color: #952121;
+}
+
+#clearBtn {
+    background-color: #8e8d8d;
+}
+
+#clearBtn:hover {
+    background-color: #333;
+}
+
+.queue-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.queue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.queue-element {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #54bae6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 5px 30px 5px;
+    background-color: #a1c0c6;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.index-label {
+    position: absolute;
+    bottom: -25px;
+    font-size: 12px;
+    color: #4a3a3a;
+    width: 100%;
+    text-align: center;
+}
+
+.pointers {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.pointer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pointer-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.pointer-box {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #3a3232;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a8a8a8;
+    font-weight: bold;
+}
+
+.array-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.highlight-circle {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 5px solid #1670b9;
+    border-radius: 50%;
+    pointer-events: none;
+    box-sizing: border-box;
+    z-index: 10;
+    transition: all 1s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes green-glow {
+    0% { box-shadow: 0 0 5px #4CAF50; }
+    50% { box-shadow: 0 0 20px #4CAF50; }
+    100% { box-shadow: 0 0 5px #4CAF50; }
+}
+
+.pulse-effect {
+    animation: pulse 1s infinite;
+}
+
+.glow-effect {
+    animation: green-glow 1s 3;
+}

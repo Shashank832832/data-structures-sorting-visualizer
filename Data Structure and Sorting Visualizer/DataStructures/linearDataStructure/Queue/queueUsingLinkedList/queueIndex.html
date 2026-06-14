@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Queue Visualization</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Queue Visualization</h1>
+    <div class="controls">
+      <input id="inputValue" type="text" placeholder="Enter value" />
+      <button id="enqueueBtn">Enqueue</button>
+      <button id="dequeueBtn">Dequeue</button>
+      <button id="clearBtn">Clear</button>
+    </div>
+    <div class="visualization" id="visualization">
+      <div class="pointer-box head-box" id="headBox">
+        <div class="pointer-label head-label">HEAD</div>
+      </div>
+      <div class="pointer-box tail-box" id="tailBox">
+        <div class="pointer-label tail-label">TAIL</div>
+      </div>
+    </div>
+    <div id="status" class="status"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

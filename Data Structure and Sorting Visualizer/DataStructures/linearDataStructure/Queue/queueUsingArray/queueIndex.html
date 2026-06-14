@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Array Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div id="status" class="status"></div>
+        <h1>Queue Array Visualization</h1>
+        <div class="controls">
+            <div class="input-group">
+                <input type="number" id="arraySize" placeholder="Array size">
+                <button id="createBtn">Create Queue</button>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="element" placeholder="Enter value">
+                <button id="enqueueBtn">Enqueue</button>
+            </div>
+            
+            <button id="dequeueBtn">Dequeue</button>
+            <button id="clearBtn">Clear</button>
+        </div>
+        
+        <div class="pointers">
+            <div class="pointer">
+                <div class="pointer-label">Front</div>
+                <div class="pointer-box" id="frontBox">-1</div>
+            </div>
+            <div class="pointer">
+                <div class="pointer-label">Back</div>
+                <div class="pointer-box" id="backBox">-1</div>
+            </div>
+        </div>
+        
+        <div class="array-container" id="array"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

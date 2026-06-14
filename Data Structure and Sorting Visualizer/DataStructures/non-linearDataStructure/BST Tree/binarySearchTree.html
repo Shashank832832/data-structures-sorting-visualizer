@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Search Tree Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Binary Search Tree Visualizer </h1>
+        
+        <div class="controls">
+            <div class="input-group">
+                <input type="number" id="nodeValue" placeholder="Enter a number" min="-99" max="99">
+                <button id="insertBtn">Insert</button>
+                <button id="deleteBtn">Delete</button>
+                <button id="searchBtn">Search</button>
+                <button id="clearBtn">Clear Tree</button>
+            </div>
+            
+            <div class="random-group">
+                <button id="randomTreeBtn">Generate Random Tree</button>
+                <input type="number" id="nodeCount" min="1" max="15" value="7" placeholder="Number of nodes">
+            </div>
+            
+            <div class="traversal-group">
+                <p >Traversals:</p>
+                <button id="inorderBtn">In-order</button>
+                <button id="preorderBtn">Pre-order</button>
+                <button id="postorderBtn">Post-order</button>
+            </div>
+        </div>
+        
+        <div class="visualization-container">
+            <canvas id="treeCanvas"></canvas>
+        </div>
+        
+        <div class="output-panel">
+            <div class="traversal-output">
+                <h3>Traversal Result:</h3>
+                <p id="traversalResult"></p>
+            </div>
+            <div class="operation-output">
+                <h3>Operation Log:</h3>
+                <div id="operationLog"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="BinarySearchTreeNode.js"></script>
+    <script src="BinarySearchTree.js"></script>
+    <script src="treeVisualizer.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

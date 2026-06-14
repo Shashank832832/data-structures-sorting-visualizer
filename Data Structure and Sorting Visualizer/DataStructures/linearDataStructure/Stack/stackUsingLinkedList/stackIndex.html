@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Linked List Visualization</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div id="status" class="status"></div>
+        
+        <h1>Stack (Linked List Implementation)</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <input id="pushValue" type="text" placeholder="Value">
+                <button id="pushBtn">Push</button>
+                <button id="popBtn">Pop</button>
+                <button id="peekBtn">Peek</button>
+                <button id="clearBtn">Clear</button>
+            </div>
+            
+            <div class="instructions">
+                Use Push to add, Pop to remove, Peek to view top element
+            </div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="stackCanvas"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

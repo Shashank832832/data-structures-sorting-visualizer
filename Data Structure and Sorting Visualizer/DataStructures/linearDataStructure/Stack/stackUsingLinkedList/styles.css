@@ -1,0 +1,140 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'), linear-gradient(to bottom, #1e3c72, #2a5298);
+    color: #f5f5f5;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'), linear-gradient(to bottom, #1e3c72, #2a5298);
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #330808;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructions {
+    background-color: #abd2f6;
+    padding: 10px;
+    border-left: 5px solid #1795fc;
+    font-size: 14px;
+    margin-left: auto;
+}
+
+button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#pushBtn, #peekBtn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#popBtn {
+    background-color: #f44336;
+    color: white;
+}
+
+#clearBtn {
+    background-color: #ff9800;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#pushValue {
+    width: 60px;
+}
+
+.canvas-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    overflow: auto;
+    min-height: 300px;
+    border: 1px solid #ddd;
+    background-color: white;
+    padding: 20px;
+}
+
+canvas {
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto;
+}
+
+.status {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e7f3fe;
+    border-left: 5px solid #2196F3;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+}
+
+.status::before {
+    content: "ℹ️";
+    font-size: 18px;
+}
+
+.status.error {
+    background-color: #fdb2bf;
+    border-left-color: #f44336;
+}
+
+.status.error::before {
+    content: "⚠️";
+}
+
+.status.success {
+    background-color: #aeffb5;
+    border-left-color: #4CAF50;
+}
+
+.status.success::before {
+    content: "✅";
+}

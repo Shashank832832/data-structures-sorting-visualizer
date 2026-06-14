@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Selection Sort Visualizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-image:url(https://wallpaperaccess.com/full/2270782.png);
+      background-size: cover;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #inputSection {
+      margin-bottom: 20px;
+    }
+
+    #arrayInput {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #barContainer {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 400px;
+      margin-top: 30px;
+    }
+
+    .bar {
+      margin: 0 2px;
+      background-color: steelblue;
+      width: 30px;
+      text-align: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .bar.compare {
+      background-color: orange;
+    }
+
+    .bar.min {
+      background-color: purple;
+    }
+
+    .bar.swap {
+      background-color: crimson;
+    }
+
+    .bar.sorted {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="color: aliceblue;">Selection Sort Visualizer</h1>
+  <div id="inputSection">
+    <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas" />
+    <button onclick="startSort()">Visualize Sort</button>
+  </div>
+  <div id="barContainer"></div>
+
+  <script>
+    function createBars(array) {
+      const container = document.getElementById('barContainer');
+      container.innerHTML = '';
+
+      array.forEach((value, index) => {
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        bar.style.height = `${value * 5}px`;
+        bar.textContent = value;
+        bar.dataset.index = index;
+        container.appendChild(bar);
+      });
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function selectionSort(array) {
+      const bars = document.getElementsByClassName('bar');
+
+      for (let i = 0; i < array.length; i++) {
+        let minIndex = i;
+        bars[minIndex].classList.add('min');
+
+        for (let j = i + 1; j < array.length; j++) {
+          bars[j].classList.add('compare');
+          await sleep(500);
+
+          if (array[j] < array[minIndex]) {
+            bars[minIndex].classList.remove('min');
+            minIndex = j;
+            bars[minIndex].classList.add('min');
+          }
+
+          bars[j].classList.remove('compare');
+        }
+
+        if (minIndex !== i) {
+          [array[i], array[minIndex]] = [array[minIndex], array[i]];
+
+          // Swap bars visually
+          bars[i].style.height = `${array[i] * 5}px`;
+          bars[i].textContent = array[i];
+          bars[minIndex].style.height = `${array[minIndex] * 5}px`;
+          bars[minIndex].textContent = array[minIndex];
+
+          bars[i].classList.add('swap');
+          bars[minIndex].classList.add('swap');
+          await sleep(500);
+          bars[i].classList.remove('swap');
+          bars[minIndex].classList.remove('swap');
+        }
+
+        bars[i].classList.remove('min');
+        bars[i].classList.add('sorted');
+      }
+    }
+
+    function startSort() {
+      const input = document.getElementById('arrayInput').value;
+      const array = input.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+
+      if (array.length === 0) {
+        alert('Please enter a valid list of numbers.');
+        return;
+      }
+
+      createBars(array);
+      selectionSort(array);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Stack Visualization(Using Array)</h1>
+        <div class="controls">
+            <div class="input-group">
+                <input type="number" id="arraySize" placeholder="Array size">
+                <div class="button-group">
+                    <button id="createBtn">
+                        <span>CREATE STACK</span>
+                        
+                    </button>
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <input type="number" id="element" placeholder="Enter number">
+                <div class="button-group">
+                    <button id="pushBtn">
+                        <span>PUSH</span>
+                        
+                    </button>
+                </div>
+            </div>
+            
+            <div class="button-group standalone">
+                <button id="peekBtn">
+                    <span>PEEK</span>
+                    
+                </button>
+            </div>
+            
+            <div class="button-group standalone">
+                <button id="popBtn">
+                    <span>POP</span>
+                    
+                </button>
+            </div>
+            
+            <div class="button-group standalone">
+                <button id="clearBtn">
+                    <span>CLEAR</span>
+                    
+                </button>
+            </div>
+        </div>
+        
+        <div class="top-container">
+            <span>Top:</span>
+            <div class="top-box" id="topBox">-1</div>
+        </div>
+        <div class="stack-container" id="stack"></div>
+        <div id="peekValue" class="peek-value"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

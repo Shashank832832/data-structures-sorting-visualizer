@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structure</title>
+    <style>
+        /* General Styling */
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'), linear-gradient(to bottom, #1e3c72, #2a5298); /* Subtle pattern with gradient */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        h {
+            font-size: 3rem;
+            color: #f7f9fc;
+            margin-top: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Container Styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            
+            gap: 50px;
+            margin-top: 230px;
+            flex-wrap: wrap;
+        }
+
+        /* Image Styling */
+        .image-link img {
+            
+            width: 300px;
+            height: auto;
+            border: 2px solid #ffffff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .image-link img:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <h1>Non-Linear Data Structure</h1>
+    <div class="container">
+        <!-- Linear Data Structure -->
+        <div class="image-link">
+            <a href="BST Tree/binarySearchTree.html">
+                <img src="bst.png" alt="BST">
+            </a>
+            <h3>BST</h3>
+        </div>
+
+        <!-- Non-Linear Data Structure -->
+        <div class="image-link">
+            <a href="AVL/avl.html">
+                <img src="avl.png" alt="AVL">
+            </a>
+            <h3>AVL</h3>
+        </div>
+
+        <div class="image-link">
+            <a href="Graph/index.html">
+                <img src="graph.png" alt="Graph">
+            </a>
+            <h3>Graph</h3>
+        </div>
+    </div>
+</body>
+</html>

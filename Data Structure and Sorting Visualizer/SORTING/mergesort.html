@@ -1,0 +1,359 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Merge Sort Visualizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #inputSection {
+      margin-bottom: 20px;
+    }
+
+    #arrayInput {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #barContainer {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 400px;
+      margin-top: 30px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+
+    .bar {
+      margin: 0 2px;
+      background-color: steelblue;
+      width: 30px;
+      text-align: center;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .bar.split {
+      background-color: orange;
+    }
+
+    .bar.merge {
+      background-color: limegreen;
+    }
+
+    .bar.sorted {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Merge Sort Visualizer</h1>
+  <div id="inputSection">
+    <input type="text" id="arrayInput" placeholder="Enter numbers separated by commas" />
+    <button onclick="startSort()">Visualize Sort</button>
+  </div>
+  <div id="barContainer"></div>
+
+  <script>
+    function createBars(array) {
+      const container = document.getElementById('barContainer');
+      container.innerHTML = '';
+      array.forEach((value, index) => {
+        const bar = document.createElement('div');
+        bar.classList.add('bar');
+        bar.style.height = `${value * 5}px`;
+        bar.textContent = value;
+        bar.dataset.index = index;
+        container.appendChild(bar);
+      });
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function getBarsArray() {
+      return Array.from(document.getElementsByClassName('bar'));
+    }
+
+    async function mergeSort(array, start, end) {
+      if (start >= end) return;
+
+      const mid = Math.floor((start + end) / 2);
+
+      await mergeSort(array, start, mid);
+      await mergeSort(array, mid + 1, end);
+      await merge(array, start, mid, end);
+    }
+
+    async function merge(array, start, mid, end) {
+      const bars = getBarsArray();
+
+      for (let i = start; i <= end; i++) {
+        bars[i].classList.add('split');
+      }
+
+      await sleep(500);
+
+      let left = array.slice(start, mid + 1);
+      let right = array.slice(mid + 1, end + 1);
+
+      let i = 0, j = 0, k = start;
+
+      while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) {
+          array[k] = left[i];
+          bars[k].style.height = `${left[i] * 5}px`;
+          bars[k].textContent = left[i];
+          i++;
+        } else {
+          array[k] = right[j];
+          bars[k].style.height = `${right[j] * 5}px`;
+          bars[k].textContent = right[j];
+          j++;
+        }
+        bars[k].classList.remove('split');
+        bars[k].classList.add('merge');
+        k++;
+        await sleep(300);
+      }
+
+      while (i < left.length) {
+        array[k] = left[i];
+        bars[k].style.height = `${left[i] * 5}px`;
+        bars[k].textContent = left[i];
+        bars[k].classList.remove('split');
+        bars[k].classList.add('merge');
+        i++; k++;
+        await sleep(300);
+      }
+
+      while (j < right.length) {
+        array[k] = right[j];
+        bars[k].style.height = `${right[j] * 5}px`;
+        bars[k].textContent = right[j];
+        bars[k].classList.remove('split');
+        bars[k].classList.add('merge');
+        j++; k++;
+        await sleep(300);
+      }
+
+      for (let i = start; i <= end; i++) {
+        bars[i].classList.remove('merge');
+      }
+
+      if (end - start + 1 === array.length) {
+        for (let i = start; i <= end; i++) {
+          bars[i].classList.add('sorted');
+        }
+      }
+    }
+
+    function startSort() {
+      const input = document.getElementById('arrayInput').value;
+      const array = input.split(',').map(num => parseInt(num.trim())).filter(num => !isNaN(num));
+
+      if (array.length === 0) {
+        alert('Please enter a valid list of numbers.');
+        return;
+      }
+
+      createBars(array);
+      mergeSort(array, 0, array.length - 1);
+    }
+  </script>
+</body>
+</html> -->
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Merge Sort Array Visualizer</title>
+  <style>
+    body {
+      font-family: monospace;
+      text-align: center;
+      background:rgb(36, 33, 33);
+      background-size: cover;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #inputSection {
+      margin-bottom: 20px;
+    }
+
+    #arrayInput {
+      width: 300px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    #visualArea {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .array-row {
+      display: flex;
+      gap: 5px;
+    }
+
+    .box {
+      padding: 8px 12px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      background-color: #fff;
+      min-width: 30px;
+    }
+
+    .splitting {
+      background-color: orange;
+    }
+
+    .merging {
+      background-color: lightgreen;
+    }
+
+    .final {
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="color: white;">Merge Sort Array Visualizer</h1>
+  <div id="inputSection">
+    <input type="text" id="arrayInput" placeholder="Enter numbers (e.g. 8,3,5,1,7)" />
+    <button onclick="startSort()">Visualize Sort</button>
+  </div>
+  <div id="visualArea"></div>
+
+  <script>
+    const visualArea = document.getElementById('visualArea');
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function createArrayRow(array, type = '') {
+      const row = document.createElement('div');
+      row.classList.add('array-row');
+
+      array.forEach(value => {
+        const box = document.createElement('div');
+        box.classList.add('box');
+        if (type) box.classList.add(type);
+        box.textContent = value;
+        row.appendChild(box);
+      });
+
+      visualArea.appendChild(row);
+    }
+
+    async function mergeSort(array) {
+      if (array.length <= 1) {
+        createArrayRow(array, 'splitting');
+        await sleep(500);
+        return array;
+      }
+
+      const mid = Math.floor(array.length / 2);
+      const left = array.slice(0, mid);
+      const right = array.slice(mid);
+
+      createArrayRow(left, 'splitting');
+      await sleep(400);
+      createArrayRow(right, 'splitting');
+      await sleep(400);
+
+      const sortedLeft = await mergeSort(left);
+      const sortedRight = await mergeSort(right);
+
+      const merged = await merge(sortedLeft, sortedRight);
+      createArrayRow(merged, merged.length === originalArray.length ? 'final' : 'merging');
+      await sleep(600);
+
+      return merged;
+    }
+
+    async function merge(left, right) {
+      let merged = [];
+      let i = 0, j = 0;
+
+      while (i < left.length && j < right.length) {
+        if (left[i] <= right[j]) {
+          merged.push(left[i]);
+          i++;
+        } else {
+          merged.push(right[j]);
+          j++;
+        }
+      }
+
+      while (i < left.length) {
+        merged.push(left[i]);
+        i++;
+      }
+
+      while (j < right.length) {
+        merged.push(right[j]);
+        j++;
+      }
+
+      return merged;
+    }
+
+    let originalArray = [];
+
+    function startSort() {
+      visualArea.innerHTML = '';
+      const input = document.getElementById('arrayInput').value;
+      const array = input.split(',').map(num => parseInt(num.trim())).filter(n => !isNaN(n));
+
+      if (array.length === 0) {
+        alert('Please enter a valid array!');
+        return;
+      }
+
+      originalArray = [...array];
+      createArrayRow(array);
+      mergeSort(array);
+    }
+  </script>
+</body>
+</html> 
+

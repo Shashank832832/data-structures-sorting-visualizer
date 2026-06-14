@@ -1,0 +1,319 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png'), linear-gradient(to bottom, #1e3c72, #2a5298,#1550bd);
+    background-size: 25% 25%;
+    animation: gradientBG 15s ease infinite;
+}
+
+
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 100%;
+    }
+    0% {
+        background-position: 100% 0%;
+    }
+    0% {
+        background-position: 0% 100%;
+    }
+}
+
+.container {
+    background-color: rgba(162, 134, 134, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin: 0 auto;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Rest of your existing CSS remains the same */
+h1 {
+    color: #3a4a6d;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.top-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.top-box {
+    border: 3px solid #3a4a6d;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    background-color: #ff7e5f;
+    color: white;
+    font-weight: bold;
+    width: 67px;
+    height: 67px;
+    margin-left: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+/* ... rest of your existing CSS ... */
+
+.top-container span {
+    font-size: 22px;
+    font-weight: 600;
+    color: #3a4a6d;
+}
+
+.stack-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 90vw;
+    margin: 0 auto;
+    gap: 15px;
+    row-gap: 50px;
+    padding: 20px 0;
+}
+
+.stack-element {
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    border: 3px solid #3a4a6d;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    background: linear-gradient(145deg, #ffffff 0%, #e6e9f0 100%);
+    color: #3a4a6d;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.stack-element:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.index-label {
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    text-align: center;
+    color: #5a6a8a;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #dbea57;
+    width: 70px;
+    height: 70px;
+    transition: all 1s ease-in-out;
+    box-shadow: 0 4px 15px rgba(255, 126, 95, 0.4);
+}
+
+.controls {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+input {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #d1d9e6;
+    border-radius: 8px;
+    width: 150px;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+input:focus {
+    outline: none;
+    border-color: #3a4a6d;
+    box-shadow: 0 0 0 3px rgba(58, 74, 109, 0.2);
+}
+
+/* ... (keep all your existing styles above) ... */
+
+/* ... (keep all your existing styles above) ... */
+
+/* Enhanced CSS3 Buttons */
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+button:hover::before {
+    opacity: 1;
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Create Stack Button */
+#createBtn {
+    background: linear-gradient(to right, #4e7cff, #6a5acd);
+    color: white;
+    border: 2px solid #4e7cff;
+}
+
+#createBtn::before {
+    background: linear-gradient(to right, #6a5acd, #4e7cff);
+}
+
+/* Push Button */
+#pushBtn {
+    background: linear-gradient(to right, #6bd2a2, #4CAF50);
+    color: white;
+    border: 2px solid #6bd2a2;
+}
+
+#pushBtn::before {
+    background: linear-gradient(to right, #4CAF50, #6bd2a2);
+}
+
+/* Pop Button */
+#popBtn {
+    background: linear-gradient(to right, #ff7e5f, #ff4d4d);
+    color: white;
+    border: 2px solid #ff7e5f;
+}
+
+#popBtn::before {
+    background: linear-gradient(to right, #ff4d4d, #ff7e5f);
+}
+
+/* Clear Button */
+#clearBtn {
+    background: linear-gradient(to right, #a1a8c3, #7a7f8f);
+    color: white;
+    border: 2px solid #a1a8c3;
+}
+
+#clearBtn::before {
+    background: linear-gradient(to right, #7a7f8f, #a1a8c3);
+}
+
+/* Hover Effects for All Buttons */
+#createBtn:hover, #pushBtn:hover, #popBtn:hover, #clearBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    color: white;
+}
+
+/* Pulse Animation on Click */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+button:focus {
+    animation: pulse 0.5s ease;
+    outline: none;
+}
+
+/* Responsive Buttons */
+@media (max-width: 600px) {
+    button {
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+}
+
+/* Add this to your existing styles */
+#peekBtn {
+    background-color: #9b59b6; /* Purple */
+}
+#peekBtn:hover {
+    background-color: #8e44ad;
+}
+
+.peek-value {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    min-height: 24px;
+}
+
+/* Keep all your existing button styles */
+/* ... rest of your CSS ... */
+/* Add this to your existing styles */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 5px solid #7a3dea;
+    width: 70px;
+    height: 70px;
+    transition: transform 1s ease-in-out;
+    box-shadow: 0 4px 15px rgba(192, 122, 105, 0.4);
+    z-index: 100; /* Ensure it appears above other elements */
+    pointer-events: none; /* Prevent interaction with the circle */
+    box-sizing: border-box; /* Include border in dimensions */
+}
+
+
+.peek-highlight {
+    position: relative;
+    animation: pulseHighlight 1s ease-in-out;
+    border: 7px solid #9b59b6 !important;
+    box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.3);
+}
+
+@keyframes pulseHighlight {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+

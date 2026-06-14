@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVL Tree Visualization</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>AVL Tree Visualization</h1>
+    <p>Visualize AVL tree operations and rotations</p>
+  </header>
+  
+  <div class="container">
+    <div class="controls">
+      <h2>Controls</h2>
+      
+      <div class="control-group">
+        <h3>Tree Operations</h3>
+        
+        <div class="form-control">
+          <input type="number" id="insert-value" min="1" max="999" placeholder="Enter value">
+          <button id="insert-btn" class="btn-primary">Insert</button>
+        </div>
+        
+        <div class="form-control">
+          <input type="number" id="delete-value" min="1" max="999" placeholder="Enter value">
+          <button id="delete-btn" class="btn-danger">Delete</button>
+        </div>
+        
+        <div class="button-grid">
+          <button id="build-tree-btn" class="btn-success">Build Tree</button>
+          <button id="clear-tree-btn" class="btn-secondary">Clear Tree</button>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <h3>Tree Traversal</h3>
+        <div class="button-grid">
+          <button id="inorder-btn" class="btn-primary">In-Order</button>
+          <button id="preorder-btn" class="btn-primary">Pre-Order</button>
+          <button id="postorder-btn" class="btn-primary">Post-Order</button>
+          <button id="levelorder-btn" class="btn-primary">Level-Order</button>
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <h3>Animation Controls</h3>
+        <div class="form-control">
+          <label for="speed-slider">Animation Speed</label>
+        </div>
+        <div class="form-control">
+          <span>Slow</span>
+          <input type="range" id="speed-slider" min="1" max="100" value="50">
+          <span>Fast</span>
+        </div>
+        
+        <div class="button-grid">
+          <button id="play-btn" class="btn-primary">Play</button>
+          <button id="pause-btn" class="btn-secondary">Pause</button>
+          <button id="step-forward-btn" class="btn-secondary">Step Forward</button>
+          <button id="step-backward-btn" class="btn-secondary">Step Backward</button>
+        </div>
+      </div>
+      
+      <div class="status-panel">
+        <h3>Status</h3>
+        <div id="status-text">Ready</div>
+        <div style="margin-top: 10px;">
+          <h4 style="font-size: 0.8rem; color: #666; margin-bottom: 5px;">Current Operation:</h4>
+          <div id="current-operation" style="font-family: monospace;">None</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="visualization">
+      <h2>Visualization</h2>
+      <canvas id="tree-canvas" class="tree-canvas"></canvas>
+      
+      <div class="info-panel">
+        <h3 style="font-size: 0.9rem; text-transform: uppercase; color: #666; margin-bottom: 10px;">Tree Information</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <span>Nodes:</span>
+            <span id="node-count">0</span>
+          </div>
+          <div class="info-item">
+            <span>Height:</span>
+            <span id="tree-height">0</span>
+          </div>
+          <div class="info-item">
+            <span>Balanced:</span>
+            <span id="is-balanced">Yes</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="algorithm-steps">
+        <h3 style="font-size: 0.9rem; text-transform: uppercase; color: #666; margin-bottom: 10px;">Algorithm Steps</h3>
+        <pre id="algorithm-steps-text">// Current algorithm steps will be displayed here</pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
