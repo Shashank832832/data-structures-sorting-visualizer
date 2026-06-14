@@ -1,2 +1,6 @@
-Report.PDF
-data visualization and sorting.pptx
+# Documents
+*.pdf
+*.ppt
+*.pptx
+*.doc
+*.docx
